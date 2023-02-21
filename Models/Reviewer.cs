@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace PokemonReviewApi.Models
 {
-    public class Reviewer
-    {
-        public int Id {get; set;}
-        public string FirstName {get; set;}
-        public string LastName {get; set;}
+  public class Reviewer
+  {
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
 
-      // Relationships
-        public ICollection<Owner> Owners {get; set;}
-    }
+    // Relationships
+    public ICollection<Owner> Owners { get; set; }
+  }
 }

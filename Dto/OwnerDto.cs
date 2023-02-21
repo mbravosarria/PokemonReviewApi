@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace PokemonReviewApi.Dto
 {
-    public class OwnerDto
-    {
-        public int Id {get; set;}
-        public string Name {get; set;}
-        public string Gym {get; set;}
-    }
+  public class OwnerDto
+  {
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Gym { get; set; }
+  }
 }

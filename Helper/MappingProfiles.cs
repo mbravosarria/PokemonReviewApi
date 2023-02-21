@@ -1,38 +1,42 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
+
 using PokemonReviewApi.Dto;
 using PokemonReviewApi.Models;
 
 namespace PokemonReviewApi.Helper
 {
-    public static class Mapping
+  public static class Mapping
+  {
+    private static readonly Lazy<IMapper> Lazy = new(() =>
     {
-        private static readonly Lazy<IMapper> Lazy = new(() =>
-        {
-            var config = new MapperConfiguration(cfg => {
-                cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsAssembly;
-                cfg.AddProfile<MappingProfiles>();
-            });
-            var mapper = config.CreateMapper();
-            return mapper;
-        });
+      MapperConfiguration config = new(cfg =>
+      {
+        cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsAssembly;
+        cfg.AddProfile<MappingProfiles>();
+      });
+      IMapper mapper = config.CreateMapper();
+      return mapper;
+    });
 
-        public static IMapper Mapper => Lazy.Value;
-    }
+    public static IMapper Mapper => Lazy.Value;
+  }
 
-    public class MappingProfiles: Profile
+  public class MappingProfiles : Profile
+  {
+    public MappingProfiles()
     {
-        public MappingProfiles()
-        {
-            CreateMap<Pokemon, PokemonDto>();
-            CreateMap<Category, CategoryDto>();
-            CreateMap<Country, CountryDto>();
-            CreateMap<Owner, OwnerDto>();
-            CreateMap<Review, ReviewDto>();
-            CreateMap<Reviewer, ReviewerDto>();
-        }
+      _ = CreateMap<Pokemon, PokemonDto>();
+      _ = CreateMap<PokemonDto, Pokemon>();
+      _ = CreateMap<Category, CategoryDto>();
+      _ = CreateMap<CategoryDto, Category>();
+      _ = CreateMap<Country, CountryDto>();
+      _ = CreateMap<CountryDto, Country>();
+      _ = CreateMap<Owner, OwnerDto>();
+      _ = CreateMap<OwnerDto, Owner>();
+      _ = CreateMap<Review, ReviewDto>();
+      _ = CreateMap<ReviewDto, Review>();
+      _ = CreateMap<Reviewer, ReviewerDto>();
+      _ = CreateMap<ReviewerDto, Reviewer>();
     }
+  }
 }

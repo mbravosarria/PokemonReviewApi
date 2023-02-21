@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 using PokemonReviewApi.Data;
 using PokemonReviewApi.Models;
 
@@ -9,14 +10,14 @@ namespace PokemonReviewApi
 {
     public class Seed
     {
-        private readonly DataContext dataContext;
+        private readonly DataContext _dataContext;
         public Seed(DataContext context)
         {
-            this.dataContext = context;
+            this._dataContext = context;
         }
         public void SeedDataContext()
         {
-            if (!dataContext.PokemonOwners.Any())
+            if (!_dataContext.PokemonOwners.Any())
             {
                 var pokemonOwners = new List<PokemonOwner>()
                 {
@@ -111,8 +112,8 @@ namespace PokemonReviewApi
                         }
                     }
                 };
-                dataContext.PokemonOwners.AddRange(pokemonOwners);
-                dataContext.SaveChanges();
+                _dataContext.PokemonOwners.AddRange(pokemonOwners);
+                _dataContext.SaveChanges();
             }
         }
     }
