@@ -35,7 +35,7 @@ namespace PokemonReviewApi.Repository
 
     public bool CreateReviewer(Reviewer reviewer)
     {
-      _context.Add(reviewer);
+      _ = _ = _context.Add(reviewer);
       return Save();
     }
 
@@ -43,6 +43,18 @@ namespace PokemonReviewApi.Repository
     {
       int saved = _context.SaveChanges();
       return saved > 0;
+    }
+
+    public bool UpdateReviewer(Reviewer reviewer)
+    {
+      _ = _context.Update(reviewer);
+      return Save();
+    }
+
+    public bool DeleteReviewer(Reviewer reviewer)
+    {
+      _ = _context.Remove(reviewer);
+      return Save();
     }
   }
 }

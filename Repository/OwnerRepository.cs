@@ -20,6 +20,12 @@ namespace PokemonReviewApi.Repository
       return Save();
     }
 
+    public bool DeleteOwner(Owner owner)
+    {
+      _ = _context.Remove(owner);
+      return Save();
+    }
+
     public Owner GetOwner(int ownerId)
     {
       return _context.Owners.Where(o => o.Id == ownerId).FirstOrDefault();
@@ -49,6 +55,12 @@ namespace PokemonReviewApi.Repository
     {
       int saved = _context.SaveChanges();
       return saved > 0;
+    }
+
+    public bool UpdateOwner(Owner owner)
+    {
+      _ = _context.Update(owner);
+      return Save();
     }
   }
 }

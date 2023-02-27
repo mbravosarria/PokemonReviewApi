@@ -25,6 +25,12 @@ namespace PokemonReviewApi.Repository
       return Save();
     }
 
+    public bool DeleteCountry(Country country)
+    {
+      _ = _context.Remove(country);
+      return Save();
+    }
+
     public ICollection<Country> GetCountries()
     {
       return _context.Countries.ToList();
@@ -49,6 +55,12 @@ namespace PokemonReviewApi.Repository
     {
       int saved = _context.SaveChanges();
       return saved > 0;
+    }
+
+    public bool UpdateCountry(Country country)
+    {
+      _ = _context.Update(country);
+      return Save();
     }
   }
 }

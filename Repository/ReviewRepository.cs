@@ -44,5 +44,17 @@ namespace PokemonReviewApi.Repository
       int saved = _context.SaveChanges();
       return saved > 0;
     }
+
+    public bool UpdateReview(Review review)
+    {
+      _ = _context.Update(review);
+      return Save();
+    }
+
+    public bool DeleteReview(Review review)
+    {
+      _ = _context.Remove(review);
+      return Save();
+    }
   }
 }

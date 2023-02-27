@@ -24,6 +24,12 @@ namespace PokemonReviewApi.Repository
       return Save();
     }
 
+    public bool DeleteCategory(Category category)
+    {
+      _ = _context.Remove(category);
+      return Save();
+    }
+
     public ICollection<Category> GetCategories()
     {
       return _context.Categories.ToList();
@@ -43,6 +49,12 @@ namespace PokemonReviewApi.Repository
     {
       int saved = _context.SaveChanges();
       return saved > 0;
+    }
+
+    public bool UpdateCategory(Category category)
+    {
+      _ = _context.Update(category);
+      return Save();
     }
   }
 }
